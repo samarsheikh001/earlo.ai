@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "DM Sans"
+}
+
+.gra {
+  position: absolute;
+  width: 60%;
+  height: 260px;
+  top: 0px;
+  right: 30%;
+  pointer-events: none;
+  border-radius: 120px 20px;
+  opacity: 0.14;
+  box-shadow: rgb(0 143 253) 20px 250px 300px;
+  transform: rotate(15deg) translateY(-175%) translateZ(0px);
+  transition: opacity 1.5s cubic-bezier(0.17, 0.17, 0, 1) 0s;
+}
