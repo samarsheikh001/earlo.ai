@@ -2,7 +2,6 @@ import openai from "../../lib/openaiSetup";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const prompt = req.body.prompt;
-    console.log(prompt);
     
     try {
       const result = await generator(prompt);

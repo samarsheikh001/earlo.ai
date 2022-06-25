@@ -12,17 +12,21 @@ export default function Home() {
   const [conversation, setConversation] = useState([]);
   const [text, setText] = useState("");
   useEffect(() => {
-    fetchPostJSON("/api/generate", { prompt: prompt.current }).then((res) => {
-      setConversation((prevArr) => [
-        ...prevArr,
-        {
-          name: "Earlo AI",
-          text: res[0].text,
-        },
-      ]);
-      prompt.current += res[0].text;
-      console.log(prompt.current);
-    });
+    console.log(prompt.current);
+    fetchPostJSON("/api/generate", { prompt: prompt.current })
+      .then((res) => {
+        console.log(res);
+        setConversation((prevArr) => [
+          ...prevArr,
+          {
+            name: "Earlo AI",
+            text: res[0].text,
+          },
+        ]);
+        prompt.current += res[0].text;
+        console.log(prompt.current);
+      })
+      .catch((e) => console.log(e));
   }, []);
   return (
     <div className="h-screen p-4">
