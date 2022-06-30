@@ -7,7 +7,7 @@ function classNames(...classes) {
 
 export default function Coversation({ conversation }) {
   return (
-    <div className="flow-root">
+    <div className="flow-root w-full">
       <ul role="list" className="p-4 pb-0">
         {conversation.map((conversationItem, conversationItemIdx) => (
           <li key={conversationItemIdx}>
@@ -31,8 +31,8 @@ export default function Coversation({ conversation }) {
                       className={classNames(
                         "mt-2 text-sm p-4 rounded-3xl",
                         conversationItem.name == "You"
-                          ? "bg-blue-500 text-white rounded-tr"
-                          : "bg-gray-200 text-gray-700 rounded-bl"
+                          ? "bg-blue-500 text-white rounded-tr float-right"
+                          : "bg-gray-200 text-gray-700 rounded-bl float-left"
                       )}
                     >
                       <p>{conversationItem.text}</p>
