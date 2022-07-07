@@ -303,6 +303,7 @@ function Home() {
       </div>
 
       <form
+      autoComplete="false"
         onSubmit={(e) => {
           e.preventDefault();
           if (!text) return;
