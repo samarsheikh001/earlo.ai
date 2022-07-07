@@ -259,7 +259,7 @@ import Conversation from "../components/Conversation.jsx";
 import { fetchPostJSON } from "../lib/api-helpers.js";
 
 const initialPrompt =
-'"student profile" = information on the student to change how you teach them.\n"learning topic" = the topic that\'s being taught.\n"Student name" = how to address them\n"English proficiency" = their level of proficiency in English\nNote: Don\'t respond on behalf of the student\nNote: After the student responds (Student:), respond to them.\nNote: End every ALS sentence with a question to engage the student.\nExample Layout:\nALS: Hello.\nStudent: Hi.\nALS: Welcome to the session.\nStudent: Thanks.\n--------------\nStudent Profile: high school student\nStudent Name: Jasper\nEnglish Proficiency: 2nd grader\nLearning Topic: Napoleon\nList the most important things that a student should learn if they want to understand the learning topic:\n\n-What Napoleon Bonaparte did during his lifetime\n-The effects of Napoleon\'s actions on Europe and the world\n-How people today view Napoleon and his legacy\n\nBegin the lesson!\n\nALS:';
+  "ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is jasper'.\n\nBegin the lesson!\n\nALS: Welcome to the session Jasper.\nStudent: Thanks.\n\nALS:";
 
 function Home() {
   const prompt = useRef(initialPrompt);
@@ -305,6 +305,7 @@ function Home() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          if (!text) return;
           setConversation((prevArr) => [
             ...prevArr,
             {
@@ -338,7 +339,7 @@ function Home() {
         <div className="flex items-center py-2 px-3 bg-gray-50 rounded-lg ">
           <input
             id="chat"
-            autoComplete="false"
+            autoComplete={false}
             name="text"
             className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Your message..."

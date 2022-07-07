@@ -25,11 +25,12 @@ async function generator(prompt) {
   const response = await openai.createCompletion({
     model: "text-davinci-002",
     prompt,
-    temperature: 0,
+    temperature: 0.5,
     max_tokens: 120,
-    frequency_penalty: 0,
+    top_p: 0.3,
+    frequency_penalty: 0.5,
     presence_penalty: 0,
-    n: 1,
+    stop: ["Student:"],
   });
   console.log(response.data.choices);
 
