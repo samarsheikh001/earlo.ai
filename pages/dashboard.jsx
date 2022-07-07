@@ -303,7 +303,6 @@ function Home() {
       </div>
 
       <form
-      autoComplete="false"
         onSubmit={(e) => {
           e.preventDefault();
           if (!text) return;
@@ -340,7 +339,7 @@ function Home() {
         <div className="flex items-center py-2 px-3 bg-gray-50 rounded-lg ">
           <input
             id="chat"
-            autoComplete={false}
+            autoComplete="off"
             name="text"
             className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Your message..."
