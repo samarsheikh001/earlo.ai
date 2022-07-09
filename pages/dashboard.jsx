@@ -298,6 +298,10 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
+        <span className="font-medium">You are interacting an AI.</span> Please be polite.
+      </div>
+
       <div ref={myRef} className="flex-1 flex overflow-auto">
         <Conversation conversation={conversation} />
       </div>
