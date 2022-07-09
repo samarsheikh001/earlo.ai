@@ -43,6 +43,6 @@ async function generator(prompt) {
   if (contentFilter.data.choices[0].text === "0") {
     return response.data.choices;
   } else {
-    return [{ text: "[Charley's response was flagged by our content filters. If you believe this was by accident, send us an email.]" }];
+    return [{ text: "Charley's response was flagged by our content filters. Keep in mind that we're still in demo, so mistakes are likely to come up, but we're working on it!" }];
   }
 }
