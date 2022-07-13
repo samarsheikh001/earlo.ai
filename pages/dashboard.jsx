@@ -287,7 +287,7 @@ function Home() {
       const userRef = doc(firestore, "users", email);
       const data = await getDoc(userRef);
       prompt.current =
-        `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is jasper. The topic for today's student session is ${data.data().topic}.\n\nBegin the lesson!\n\nALS: Welcome to the session Jasper.\nStudent: Thanks.\n\nALS:`;
+        `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is ${data.data().name}. The topic for today's student session is ${data.data().topic}.\n\nBegin the lesson!\n\nALS: Welcome to the session Jasper.\nStudent: Thanks.\n\nALS:`;
       fetchPostJSON("/api/generate", { prompt: prompt.current })
         .then((res) => {
           console.log(res);
