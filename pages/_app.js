@@ -15,12 +15,13 @@ import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDffLofon3lwcW2ZO5pCZZUYplPO9ADmdw",
-  authDomain: "empleame-13c73.firebaseapp.com",
-  projectId: "empleame-13c73",
-  storageBucket: "empleame-13c73.appspot.com",
-  messagingSenderId: "249874802555",
-  appId: "1:249874802555:web:5e0b338aceb103da36ffde",
+  apiKey: "AIzaSyCppQq0d4_jFAgQBYfx09_zjUqYFCUkbdY",
+  authDomain: "charley-95c57.firebaseapp.com",
+  projectId: "charley-95c57",
+  storageBucket: "charley-95c57.appspot.com",
+  messagingSenderId: "392427568631",
+  appId: "1:392427568631:web:e42b001497973a9dbbc2f2",
+  measurementId: "G-E9JD7QTJGT"
 };
 
 function MyApp({ Component, pageProps }) {
