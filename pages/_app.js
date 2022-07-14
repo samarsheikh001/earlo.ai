@@ -1,5 +1,9 @@
 import { getAuth } from "firebase/auth";
-import { initializeFirestore, enableIndexedDbPersistence, getFirestore } from "firebase/firestore";
+import {
+  initializeFirestore,
+  enableIndexedDbPersistence,
+  getFirestore,
+} from "firebase/firestore";
 import {
   FirebaseAppProvider,
   AuthProvider,
@@ -7,6 +11,7 @@ import {
   useInitFirestore,
   FirestoreProvider,
 } from "reactfire";
+import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 
 const firebaseConfig = {
@@ -33,7 +38,8 @@ function FirebaseSetupComponent({ Component, pageProps }) {
   return (
     <AuthProvider sdk={auth}>
       <FirestoreProvider sdk={firestoreInstance}>
-        <Component {...pageProps} />
+        <Toaster/>
+          <Component {...pageProps} />
       </FirestoreProvider>
     </AuthProvider>
   );

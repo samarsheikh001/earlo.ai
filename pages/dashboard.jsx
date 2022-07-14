@@ -280,21 +280,22 @@ function Home() {
   const [conversation, setConversation] = useState([]);
   const [text, setText] = useState("");
 
+  const { currentUser } = useAuth();
+
   const firestore = useFirestore();
 
   useEffect(() => {
-    async function getUserData(email) {
-      const userRef = doc(firestore, "users", email);
-      const data = await getDoc(userRef);
-      prompt.current =
-        `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is ${data.data().name}. The topic for today's student session is ${data.data().topic}.\n\nBegin the lesson!\n\nALS: Welcome to the session Jasper.\nStudent: Thanks.\n\nALS:`;
+    async function getUserData(currentUser) {
+      prompt.current = `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is ${
+        currentUser.displayName
+      }.\n\nBegin the lesson!\n\nALS: Welcome to the session ${currentUser.displayName}.\nStudent: Thanks.\n\nALS:`;
       fetchPostJSON("/api/generate", { prompt: prompt.current })
         .then((res) => {
           console.log(res);
           setConversation((prevArr) => [
             ...prevArr,
             {
-              name: "Earlo AI",
+              name: "Charley AI",
               text: res[0].text,
             },
           ]);
@@ -303,8 +304,10 @@ function Home() {
         })
         .catch((e) => console.log(e));
     }
-    getUserData("samarsheikh001@gmail.com");
-  }, [firestore]);
+    if(currentUser) {
+      getUserData(currentUser);
+    }
+  }, [firestore, currentUser]);
 
   useEffect(() => {
     executeScroll();
@@ -316,7 +319,7 @@ function Home() {
   return (
     <div className="h-full p-4 flex flex-col items-stretch">
       <Head>
-        <title>Earlo.ai</title>
+        <title>Charley.ai</title>
         <meta name="description" content="AI powered learning platform" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -354,7 +357,7 @@ function Home() {
             setConversation((prevArr) => [
               ...prevArr,
               {
-                name: "Earlo AI",
+                name: "Charley AI",
                 text: res[0].text,
               },
             ]);
