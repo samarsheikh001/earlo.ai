@@ -331,7 +331,7 @@ function Home() {
             },
           ]);
 
-          prompt.current += "\nStudent:" + text + "\nALS:";
+          prompt.current += "\nStudent:" + text + "\nCharley:";
 
           fetchPostJSON("/api/generate", {
             prompt: prompt.current,
