@@ -19,16 +19,19 @@ export default function UserSecretRegister(params) {
     } catch (error) {
       toast.error(error.message);
     }
-    console.log(res);
   };
 
   return (
     <>
-      <input type="text" ref={email} placeholder={"Email"} />
-      <input type="text" ref={password} placeholder={"Password"} />
-      <input type="text" ref={name} placeholder={"name"} />
-      <input type="text" ref={photoUrl} placeholder={"photo url"} />
-      <button onClick={createProfile}>Submit</button>
+      <div className="flex flex-col space-y-4 p-5">
+        <input type="text" ref={email} placeholder={"Email"} />
+        <input type="text" ref={password} placeholder={"Password"} />
+        <input type="text" ref={name} placeholder={"name"} />
+        <input type="text" ref={photoUrl} placeholder={"photo url"} />
+        <button className="bg-black text-white py-2 px-4 rounded" onClick={createProfile}>
+          Submit
+        </button>
+      </div>
     </>
   );
 }
