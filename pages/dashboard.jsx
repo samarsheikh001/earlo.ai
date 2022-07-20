@@ -35,11 +35,7 @@ export default function Dashboard() {
       <div className="h-screen">
         <div className="h-full flex">
           <Transition.Root show={sidebarOpen} as={Fragment}>
-            <Dialog
-              as="div"
-              className="fixed inset-0 flex z-40 lg:hidden"
-              onClose={setSidebarOpen}
-            >
+            <Dialog as="div" className="fixed inset-0 flex z-40 lg:hidden" onClose={setSidebarOpen}>
               <Transition.Child
                 as={Fragment}
                 enter="transition-opacity ease-linear duration-300"
@@ -77,10 +73,7 @@ export default function Dashboard() {
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
-                        <XIcon
-                          className="h-6 w-6 text-white"
-                          aria-hidden="true"
-                        />
+                        <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
                       </button>
                     </div>
                   </Transition.Child>
@@ -107,9 +100,7 @@ export default function Dashboard() {
                           >
                             <item.icon
                               className={classNames(
-                                item.current
-                                  ? "text-gray-500"
-                                  : "text-gray-400 group-hover:text-gray-500",
+                                item.current ? "text-gray-500" : "text-gray-400 group-hover:text-gray-500",
                                 "mr-4 h-6 w-6"
                               )}
                               aria-hidden="true"
@@ -174,17 +165,13 @@ export default function Dashboard() {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current
-                              ? "text-blue-500"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                            item.current ? "text-blue-500" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                             "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.current
-                                ? "text-blue-500"
-                                : "text-gray-400 group-hover:text-gray-500",
+                              item.current ? "text-blue-500" : "text-gray-400 group-hover:text-gray-500",
                               "mr-3 h-6 w-6"
                             )}
                             aria-hidden="true"
@@ -199,11 +186,7 @@ export default function Dashboard() {
                   <a href="#" className="flex-shrink-0 w-full group block">
                     <div className="flex items-center">
                       <div>
-                        <img
-                          className="inline-block h-9 w-9 rounded-full"
-                          src={auth.currentUser?.photoURL}
-                          alt=""
-                        />
+                        <img className="inline-block h-9 w-9 rounded-full" src={auth.currentUser?.photoURL} alt="" />
                       </div>
                       <div className="ml-3">
                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
@@ -286,9 +269,10 @@ function Home() {
 
   useEffect(() => {
     async function getUserData(currentUser) {
-      prompt.current = `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is ${
-        currentUser.displayName
-      }.\n\nBegin the lesson!\n\nALS: Welcome to the session ${currentUser.displayName}.\nStudent: Thanks.\n\nALS:`;
+      // prompt.current = `ALS is a tutor chatbot that ask it's student what topic they want to learn and teach them. ALS intelligently answers questions with engaging responses and facts, his student name is ${
+      //   currentUser.displayName
+      // }.\n\nBegin the lesson!\n\nALS: Welcome to the session ${currentUser.displayName}.\nStudent: Thanks.\n\nALS:`;
+      prompt.current = `Charley is an AI Powered study tool and tutor chatbot that helps students learn in a style that's unique to them. Charley adapts to their needs, abilities, goals, and proficiencies, which results in an effective delivery of material and information. Charley creates and delivers lessons based on what they want to learn (will ask what they want to learn at the start of a session). Charley engages the student by asking questions as often as possible and by providing engaging responses. Depending on language proficiency, Charley will go more in-depth with responses (high proficiency) or give explanations and use shorter and more simple words (low proficiency), and everywhere in between. Charley will develop a personal relationship over time, and address the student by their name. Charley will always provide responses that cover the topic, so there should never be responses that lead into something else. All responses should cover enough information on the topic, and allow the student to give a response without it being awkward.\n\nStudent Name: ${currentUser.displayName}\nLanguage Proficiency: very low\nEducation: completed high school\n--------------\nCharley: Welcome to the session.\nStudent: Thanks.\nCharley:`;
       fetchPostJSON("/api/generate", { prompt: prompt.current })
         .then((res) => {
           console.log(res);
@@ -304,7 +288,7 @@ function Home() {
         })
         .catch((e) => console.log(e));
     }
-    if(currentUser) {
+    if (currentUser) {
       getUserData(currentUser);
     }
   }, [firestore, currentUser]);
@@ -314,8 +298,7 @@ function Home() {
   }, [conversation]);
 
   const myRef = useRef(null);
-  const executeScroll = () =>
-    myRef.current.scrollTo(0, myRef.current.scrollHeight);
+  const executeScroll = () => myRef.current.scrollTo(0, myRef.current.scrollHeight);
   return (
     <div className="h-full p-4 flex flex-col items-stretch">
       <Head>
@@ -328,8 +311,7 @@ function Home() {
         className="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
         role="alert"
       >
-        <span className="font-medium">You are interacting an AI.</span> Please
-        be polite.
+        <span className="font-medium">You are interacting an AI.</span> Please be polite.
       </div>
 
       <div ref={myRef} className="flex-1 flex overflow-auto">
